@@ -40,9 +40,9 @@ public class EmployeeControllerIT {
 	@BeforeEach
 	void setUp() throws Exception {
 		
-		operatorUsername = "ana@gmail.com";
+		operatorUsername = "maria@gmail.com";
 		operatorPassword = "123456";
-		adminUsername = "bob@gmail.com";
+		adminUsername = "erick@gmail.com";
 		adminPassword = "123456";
 	}
 	
@@ -106,7 +106,7 @@ public class EmployeeControllerIT {
 
 		String accessToken = tokenUtil.obtainAccessToken(mockMvc, adminUsername, adminPassword);
 
-		EmployeeDTO dto = new EmployeeDTO(null, "   ", "joaquim@gmail.com", 1L);
+		EmployeeDTO dto = new EmployeeDTO(null, "   ", "erick@gmail.com", 1L);
 		String jsonBody = objectMapper.writeValueAsString(dto);
 		
 		ResultActions result =
@@ -117,7 +117,7 @@ public class EmployeeControllerIT {
 					.accept(MediaType.APPLICATION_JSON));
 		
 		result.andExpect(status().isUnprocessableEntity());
-		result.andExpect(jsonPath("$.errors[0].fieldName").value("name"));
+		result.andExpect(jsonPath("$.errors[0].field").value("name"));
 		result.andExpect(jsonPath("$.errors[0].message").value("Campo requerido"));
 	}
 
@@ -137,7 +137,7 @@ public class EmployeeControllerIT {
 					.accept(MediaType.APPLICATION_JSON));
 		
 		result.andExpect(status().isUnprocessableEntity());
-		result.andExpect(jsonPath("$.errors[0].fieldName").value("email"));
+		result.andExpect(jsonPath("$.errors[0].field").value("email"));
 		result.andExpect(jsonPath("$.errors[0].message").value("Email inválido"));
 	}
 
@@ -157,7 +157,7 @@ public class EmployeeControllerIT {
 					.accept(MediaType.APPLICATION_JSON));
 		
 		result.andExpect(status().isUnprocessableEntity());
-		result.andExpect(jsonPath("$.errors[0].fieldName").value("departmentId"));
+		result.andExpect(jsonPath("$.errors[0].field").value("departmentId"));
 		result.andExpect(jsonPath("$.errors[0].message").value("Campo requerido"));
 	}
 }

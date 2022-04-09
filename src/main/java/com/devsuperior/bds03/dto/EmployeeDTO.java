@@ -13,13 +13,13 @@ public class EmployeeDTO implements Serializable {
 	
 	private Long id;
 
-	@NotBlank(message = "Nome do Funcionário não pode ser vazio")
+	@NotBlank(message = "Campo requerido")
 	private String name;
 
-	@Email(message = "Email deve ser válido")
+	@Email(message = "Email inválido")
 	private String email;
 
-	@NotNull(message = "Funcionário deve estar atribuido a um departamento")
+	@NotNull(message = "Campo requerido")
 	private Long departmentId;
 	
 	public EmployeeDTO() {

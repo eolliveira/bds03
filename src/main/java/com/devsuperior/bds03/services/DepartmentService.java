@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.devsuperior.bds03.dto.DepartmentDTO;
 import com.devsuperior.bds03.entities.Department;
-import com.devsuperior.bds03.repositories.DepartmentRepository;
+import com.devsuperior.bds03.services.repositories.DepartmentRepository;
 
 @Service
 public class DepartmentService {

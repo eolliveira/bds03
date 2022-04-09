@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.devsuperior.bds03.dto.EmployeeDTO;
 import com.devsuperior.bds03.entities.Department;
 import com.devsuperior.bds03.entities.Employee;
-import com.devsuperior.bds03.repositories.EmployeeRepository;
+import com.devsuperior.bds03.services.repositories.EmployeeRepository;
 
 @Service
 public class EmployeeService {

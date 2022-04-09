@@ -3,7 +3,7 @@ package com.devsuperior.bds03.services.validation;
 import com.devsuperior.bds03.controllers.exceptions.FieldMessage;
 import com.devsuperior.bds03.dto.UserInsertDTO;
 import com.devsuperior.bds03.entities.User;
-import com.devsuperior.bds03.repositories.UserRepository;
+import com.devsuperior.bds03.services.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.validation.ConstraintValidator;

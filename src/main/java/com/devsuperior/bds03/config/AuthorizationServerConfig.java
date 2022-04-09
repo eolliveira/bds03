@@ -1,6 +1,7 @@
 package com.devsuperior.bds03.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -15,6 +16,15 @@ import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 @Configuration
 @EnableAuthorizationServer
 public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
+
+    @Value("${security.oauth2.client.client-id}")
+    private String CLIENT_ID;
+
+    @Value("${security.oauth2.client.client-secret}")
+    private String CLIENT_SECRET;
+
+    @Value("${jwt.duration}")
+    private Integer JWT_DURATION;
 
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
@@ -36,11 +46,11 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.inMemory()
-                . withClient("CLIENT_ID")
-                .secret(passwordEncoder.encode("CLIENT_SECRET"))
+                . withClient(CLIENT_ID)
+                .secret(passwordEncoder.encode(CLIENT_SECRET))
                 .scopes("read", "white")
                 .authorizedGrantTypes("password")
-                .accessTokenValiditySeconds(86400);
+                .accessTokenValiditySeconds(JWT_DURATION);
     }
 
     @Override
