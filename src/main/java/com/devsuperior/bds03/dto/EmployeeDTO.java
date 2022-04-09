@@ -4,12 +4,22 @@ import java.io.Serializable;
 
 import com.devsuperior.bds03.entities.Employee;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 public class EmployeeDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private Long id;
+
+	@NotBlank(message = "Nome do Funcionário não pode ser vazio")
 	private String name;
+
+	@Email(message = "Email deve ser válido")
 	private String email;
+
+	@NotNull(message = "Funcionário deve estar atribuido a um departamento")
 	private Long departmentId;
 	
 	public EmployeeDTO() {
